@@ -1,6 +1,5 @@
-# old_norse_models_cltk
-Trained taggers, tokenizers, etc. for the CLTK
-
+# CLTK models for Old Norse
+Trained taggers for the CLTK.
 
 ## POS tagging
 
@@ -21,8 +20,8 @@ Paths to annotated texts are made as you can see below:
 ```
 ### Extraction of words and tags
 ``` python
-    >>>> words_tags = []
-    >>>> for filename in selected_data:
+    >>> words_tags = []
+    >>> for filename in selected_data:
              words_tags.extend(extract_word_and_tags(filename))
 ```
 The function extract_word_and_tags gets a filename as input and returns the list of (word, tag) of the whole text.
@@ -30,10 +29,18 @@ Sentences were not segmented so the POS tagger is not trained completely correct
 
 ### Taggers trained with TnT
 ``` python
-    >>>> tagger = tnt.TnT()
-    >>>> tagger.train(words_tags)
-    >>>> with open(os.path.join("taggers", "pos", "tnt.pickle"), "wb") as f:
+    >>> tagger = tnt.TnT()
+    >>> tagger.train(words_tags)
+    >>> with open(os.path.join("taggers", "pos", "tnt.pickle"), "wb") as f:
              mpck = pickle.Pickler(f)
              mpck.dump(tagger)
 ```
 The model data of the TnT can be retrieved thanks to the pickle module.
+
+### Tagset
+
+http://nlp.cs.ru.is/pdf/Tagset.pdf
+
+### Complete description of the used corpus
+
+http://www.linguist.is/icelandic_treebank/Icelandic_Parsed_Historical_Corpus_(IcePaHC)
